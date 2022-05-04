@@ -10,8 +10,8 @@ const DashboardRoutes = () => {
   return (
     <Switch>
       <Route path="/" exact children={<Dashboard />} />
-      <Route path="/product/:productId" children={<Product />} />
       <Route path="/product/list" children={<ProjectList />} />
+      <Route path="/product" children={<Product />} />
       <Route path="/settings" children={<UserSettings />} />
       <Route path="/errors/404" children={<Error />} />
       <Redirect to="/errors/404" />

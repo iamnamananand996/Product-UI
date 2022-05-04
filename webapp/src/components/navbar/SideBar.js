@@ -3,8 +3,8 @@ import { Link } from "react-router-dom"
 
 export default function SideBar() {
   return (
-    <nav className="bg-gray-900 w-20  justify-between flex flex-col ">
-      <div className="mt-10 mb-10">
+    <nav className="bg-blue-500 w-20  justify-between flex flex-col">
+      <div className="mt-10 mb-10 pt-10">
         <Link to="/">
           <img
             src="https://randomuser.me/api/portraits/women/76.jpg"
@@ -15,10 +15,42 @@ export default function SideBar() {
         <div className="mt-10">
           <ul>
             <li className="mb-6">
-              <Link to="/product/list">
+              <Link to="/">
+                <span>
+                  {/* <svg
+                    className="fill-current h-5 w-5 text-gray-300 mx-auto hover:text-green-500"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 13H7v5h5v2H5V10h2v1h5v2M8
+                          4v2H4V4h4m2-2H2v6h8V2m10 9v2h-4v-2h4m2-2h-8v6h8V9m-2
+                          9v2h-4v-2h4m2-2h-8v6h8v-6z"
+                    ></path>
+                  </svg> */}
+
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="fill-current h-5 w-5 text-gray-100 mx-auto hover:text-orange-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                    />
+                  </svg>
+                </span>
+              </Link>
+            </li>
+
+            <li className="mb-6">
+              <Link to="/product">
                 <span>
                   <svg
-                    className="fill-current h-5 w-5 text-gray-300 mx-auto hover:text-green-500"
+                    className="fill-current h-5 w-5 text-gray-100 mx-auto hover:text-orange-500"
                     viewBox="0 0 24 24"
                   >
                     <path
@@ -34,7 +66,7 @@ export default function SideBar() {
               <Link to="/settings">
                 <span>
                   <svg
-                    className="fill-current h-5 w-5 mx-auto text-gray-300 hover:text-green-500"
+                    className="fill-current h-5 w-5 mx-auto text-gray-100 hover:text-orange-500"
                     viewBox="0 0 24 24"
                   >
                     <path

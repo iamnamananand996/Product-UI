@@ -2,7 +2,7 @@ import React from "react"
 
 export default function Dashboard() {
   return (
-    <div>
+    <div className="pt-14">
       Dashboard
       <div>page</div>
     </div>
