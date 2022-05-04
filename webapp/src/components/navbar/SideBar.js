@@ -3,22 +3,22 @@ import { Link } from "react-router-dom"
 
 export default function SideBar() {
   return (
-    <nav class="bg-gray-900 w-20  justify-between flex flex-col ">
-      <div class="mt-10 mb-10">
+    <nav className="bg-gray-900 w-20  justify-between flex flex-col ">
+      <div className="mt-10 mb-10">
         <Link to="/">
           <img
             src="https://randomuser.me/api/portraits/women/76.jpg"
-            class="rounded-full w-10 h-10 mb-3 mx-auto"
+            className="rounded-full w-10 h-10 mb-3 mx-auto"
             alt=""
           />
         </Link>
-        <div class="mt-10">
+        <div className="mt-10">
           <ul>
-            <li class="mb-6">
+            <li className="mb-6">
               <Link to="/product/list">
                 <span>
                   <svg
-                    class="fill-current h-5 w-5 text-gray-300 mx-auto hover:text-green-500"
+                    className="fill-current h-5 w-5 text-gray-300 mx-auto hover:text-green-500"
                     viewBox="0 0 24 24"
                   >
                     <path
@@ -30,11 +30,11 @@ export default function SideBar() {
                 </span>
               </Link>
             </li>
-            <li class="mb-6">
+            <li className="mb-6">
               <Link to="/settings">
                 <span>
                   <svg
-                    class="fill-current h-5 w-5 mx-auto text-gray-300 hover:text-green-500"
+                    className="fill-current h-5 w-5 mx-auto text-gray-300 hover:text-green-500"
                     viewBox="0 0 24 24"
                   >
                     <path
@@ -49,11 +49,11 @@ export default function SideBar() {
           </ul>
         </div>
       </div>
-      <div class="mb-4">
-        <Link to="/">
+      <div className="mb-4">
+        <Link to="#">
           <span>
             <svg
-              class="fill-current h-5 w-5 text-gray-300 mx-auto hover:text-red-500"
+              className="fill-current h-5 w-5 text-gray-300 mx-auto hover:text-red-500"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"

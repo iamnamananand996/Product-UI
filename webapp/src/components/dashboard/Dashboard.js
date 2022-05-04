@@ -1,14 +1,17 @@
 import React from "react"
-import DashboardRoutes from "../layouts/DashboardRoutes"
+import DashboardRoutes from "../../layouts/DashboardRoutes"
 import SideBar from "../navbar/SideBar"
+import { BrowserRouter } from "react-router-dom"
 
 export default function Dashboard() {
   return (
-    <div class="flex flex-row h-full">
-      <SideBar />
-      <div class="px-16 py-4 text-gray-700 bg-gray-200 h-screen w-screen">
-        <DashboardRoutes />
+    <BrowserRouter>
+      <div className="flex flex-row h-full">
+        <SideBar />
+        <div className="px-16 py-4 text-gray-700 bg-gray-200 h-screen w-screen">
+          <DashboardRoutes />
+        </div>
       </div>
-    </div>
+    </BrowserRouter>
   )
 }
