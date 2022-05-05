@@ -7,10 +7,10 @@ export default function Product() {
   const {
     name,
     description,
-    picture,
+    // picture,
     type,
     categories,
-    investmentEffort,
+    // investmentEffort,
     trl,
     businessModels,
   } = productData

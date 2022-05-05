@@ -6,8 +6,6 @@ export default function User() {
     ...productData?.user,
   }
 
-  console.log(email)
-
   return (
     <div class="max-w-sm w-full lg:max-w-full lg:flex">
       <div className="shadow-xl flex flex-col justify-between w-full bg-white rounded-lg p-4 leading-normal">
@@ -45,7 +43,7 @@ export default function User() {
           <div class="text-center my-3">
             <a
               class="text-xs text-indigo-500 italic hover:underline hover:text-indigo-600 font-medium"
-              href="#"
+              href="!#"
             >
               View Profile
             </a>
