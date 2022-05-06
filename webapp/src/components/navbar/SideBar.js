@@ -1,14 +1,19 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Link } from "react-router-dom"
+import UserContext from "../../context/UserContext"
 
 export default function SideBar() {
+  const { user } = useContext(UserContext)
   return (
-    <nav className="bg-blue-500 w-20  justify-between flex flex-col">
-      <div className="mt-10 mb-10 pt-10">
+    <nav
+      className="w-48 justify-between flex flex-col"
+      style={{ backgroundColor: `${user?.mainColor}` }}
+    >
+      <div className="mt-10 mb-10">
         <Link to="/">
           <img
-            src="https://randomuser.me/api/portraits/women/76.jpg"
-            className="rounded-full w-10 h-10 mb-3 mx-auto"
+            src={`${user?.logo}`}
+            className="rounded-full w-40 h-40 mb-3 mx-auto"
             alt=""
           />
         </Link>

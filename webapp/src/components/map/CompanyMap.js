@@ -1,13 +1,13 @@
 import React from "react"
-import { productData } from "../mocks/mockData"
+// import { productData } from "../mocks/mockData"
 
-export default function CompanyMap() {
+export default function CompanyMap({ mapData }) {
   const { name, logo, address } = {
-    ...productData?.company,
+    ...mapData,
   }
 
   return (
-    <div className="max-w-sm w-full lg:max-w-full lg:flex mt-4">
+    <div className="max-w-sm w-full lg:max-w-full lg:flex">
       <div className="shadow-xl flex flex-col justify-between w-full bg-white rounded-lg p-4 leading-normal">
         <section className="text-gray-600 body-font relative">
           <div className="absolute inset-0 bg-gray-300">
@@ -21,14 +21,14 @@ export default function CompanyMap() {
             ></iframe>
           </div>
           <div className="container pr-16 pl-16 pt-80 pb-6 mx-auto flex">
-            <div className="lg:w-full md:w-full bg-white rounded-lg p-4 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10 shadow-md">
+            <div className="lg:w-full md:w-full bg-white rounded-lg p-4 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-5 shadow-md">
               <h2 className="text-gray-900 text-lg mb-1 font-medium title-font">
                 {name}
               </h2>
-              <img className="h-fit w-20" src={logo} alt="" srcset="" />
+              <img className="h-fit w-20" src={logo} alt="" />
 
-              <div class="flex flex-row">
-                <div class="basis-1/6">
+              <div className="flex flex-row">
+                <div className="basis-1/6">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6 mt-3"
@@ -49,7 +49,7 @@ export default function CompanyMap() {
                     />
                   </svg>
                 </div>
-                <div class="basis-5/6">
+                <div className="basis-5/6">
                   <p className="text-xs text-gray-500 mt-3">
                     #{address?.house}, {address?.street}, {address?.city?.name},{" "}
                     {address?.country?.name}, {address?.zipCode}

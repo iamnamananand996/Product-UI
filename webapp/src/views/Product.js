@@ -1,33 +1,52 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import CompanyMap from "../components/map/CompanyMap"
+import Attributes from "../components/product/Attributes"
+import Description from "../components/product/Description"
 import User from "../components/user/User"
-import { productData } from "../components/mocks/mockData"
+// import { productData } from "../components/mocks/mockData"
+import { getProduct, getConfiguration } from "../services/getRequest"
 
 export default function Product() {
-  const {
-    name,
-    description,
-    // picture,
-    type,
-    categories,
-    // investmentEffort,
-    trl,
-    businessModels,
-  } = productData
+  // const {
+  //   name,
+  //   description,
+  //   // picture,
+  //   type,
+  //   categories,
+  //   // investmentEffort,
+  //   trl,
+  //   businessModels,
+  // } = productData
 
-  const getFormattedStringByName = (arrData) => {
-    return arrData?.map((category) => category?.name).join(", ")
+  const [productData, setProductData] = useState(null)
+  const [hasUserSection, setHasUserSection] = useState(false)
+
+  const canViewUserSection = (hasUserSection) => {
+    if (hasUserSection) {
+      return true
+    }
+    return false
   }
 
+  useEffect(() => {
+    getProduct("6781").then((data) => {
+      setProductData(data)
+    })
+
+    getConfiguration().then((data) => {
+      setHasUserSection(data?.hasUserSection)
+    })
+  }, [])
+
   return (
-    <div class="flex flex-row">
+    <div className="flex flex-row">
       {/* Big Div */}
-      <div class="basis-9/12 pt-14">
+      <div className="basis-9/12 pt-14">
         {/* Product Image */}
-        <div class="max-w-sm w-full lg:max-w-full lg:flex">
+        <div className="max-w-sm w-full lg:max-w-full lg:flex">
           <div className="flex justify-center shadow-xl w-full bg-white rounded-lg p-4 leading-normal">
             <img
-              class="h-fit w-2/5"
+              className="h-fit w-2/5"
               src="https://img.innoloft.com/products/product_783016a3.png"
               alt="Sunset in the mountains"
             />
@@ -35,14 +54,16 @@ export default function Product() {
         </div>
         {/* Product main Info */}
 
-        <div class="max-w-sm w-full lg:max-w-full lg:flex mt-4">
+        <div className="max-w-sm w-full lg:max-w-full lg:flex mt-4">
           <div className="shadow-xl flex flex-col justify-between w-full bg-white rounded-lg p-4 leading-normall">
-            <div class="flex flex-row">
-              <div class="basis-1/12">
-                <p class="text-2xl">{name}</p>
-                <p class="text-2xl font-bold">({type?.name})</p>{" "}
+            <div className="flex flex-row">
+              <div className="basis-1/12">
+                <p className="text-2xl">{productData?.name}</p>
+                <p className="text-2xl font-bold">
+                  ({productData?.type?.name})
+                </p>{" "}
               </div>
-              <div class="basis-1/4">
+              <div className="basis-1/4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-14 w-24 mt-1"
@@ -64,67 +85,29 @@ export default function Product() {
 
         {/* Description tab */}
 
-        <div class="flex flex-row">
-          <div class="basis-1/2">
-            <div class="max-w-sm w-full lg:max-w-full lg:flex mt-4">
-              <div className="shadow-xl flex flex-col justify-between w-full bg-white rounded-lg p-4 leading-normal">
-                <p class="text-2xl mb-4">Description</p>
-
-                <div dangerouslySetInnerHTML={{ __html: description }} />
-              </div>
-            </div>
-          </div>
-          <div class="basis-1/2 ml-3">
-            <div class="max-w-sm w-full lg:max-w-full lg:flex mt-4">
-              <div className="shadow-xl flex flex-col justify-between w-full bg-white rounded-lg p-4 leading-normal">
-                <p class="text-2xl">Attributes tab </p>
-                <table class="text-xs my-3">
-                  <tbody>
-                    <tr>
-                      <td class="px-2 py-2 text-gray-500 font-semibold">
-                        Categories
-                      </td>
-                      <td class="px-2 py-2">
-                        {getFormattedStringByName(categories)}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="px-2 py-2 text-gray-500 font-semibold">
-                        BusinessModels
-                      </td>
-                      <td class="px-2 py-2">
-                        {getFormattedStringByName(businessModels)}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="px-2 py-2 text-gray-500 font-semibold">
-                        Trls
-                      </td>
-                      <td class="px-2 py-2">{trl?.name}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
+        <div className="flex flex-row">
+          <Description description={productData?.description} />
+          <Attributes productData={productData} />
         </div>
 
         {/* Tab Content */}
 
-        <div class="max-w-sm w-full lg:max-w-full lg:flex mt-4">
+        <div className="max-w-sm w-full lg:max-w-full lg:flex mt-4">
           <div className="h-96 shadow-xl flex flex-col justify-between w-full bg-white rounded-lg p-4 leading-normal">
-            <p class="text-2xl">Tab Content </p>
+            <p className="text-2xl">Tab Content </p>
           </div>
         </div>
       </div>
 
       {/* Small Div */}
 
-      <div class="basis-1/4 ml-3 h-96 pt-14">
+      <div className="basis-1/4 ml-3 h-96 pt-14">
         {/* User Info */}
-        <User />
+        {canViewUserSection(hasUserSection) && (
+          <User userData={productData?.user} />
+        )}
         {/* Map Info */}
-        <CompanyMap />
+        <CompanyMap mapData={productData?.company} />
       </div>
     </div>
   )
