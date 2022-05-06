@@ -7,4 +7,4 @@
   yarn start
 ```
 
-Create `.env` file under `/webapp/` and copy `config` from `.env.example`
+Create `.env` file under `/webapp/` and copy `config` from `/webapp/.env.example`
